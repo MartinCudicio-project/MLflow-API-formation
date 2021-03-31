@@ -1,0 +1,8 @@
+name: env_API
+channels:
+  - defaults
+dependencies:
+  - python=3.8
+  - pip:
+    - mlflow==1.15.0
+    - falcon==2.0.0
