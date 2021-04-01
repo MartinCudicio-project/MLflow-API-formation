@@ -20,7 +20,7 @@ Lors de la création, nous allons utiliser l'import permis par Gitlab, suivez l'
 
 Le lien pour l'import
 
-## Création des environnements virtuels
+## Partie 1 - Création des environnements virtuels
 
 Souvenez-vous ce qu'on a vu dans les bases. Nouveau projet, nouvel environnement virtuel.
 Dans notre cas, nous avons un seul projet pour l'entrainement et l'api. En règle générale, nous aurons 2 projets distincts, donc 2 environnements virtuels. En effet, les librairies dont nous avons besoin dans l'api sont plus restreintes que celles lors de la phase d'entrainement, qui peuvent comporter jupyter etc ...
@@ -31,12 +31,20 @@ Le 2ème environnement virtuel se base sur le requirements.txt situé dans le do
 
 **Exercice**: Créer les 2 environnements virtuels avec Python 3.6
 
-## Le format pickle
+Acceder au notebook situé à /train/home_data_Model.ipynb avec votre IDE préféré (JupyterLab, VScode, ...)
 
-Le module pickle permet de sauvegarder dans un fichier, au format binaire, n'importe quel objet Python.
-Il va donc nous servir, dans notre cas, à enregistrer notre modèle entraîné ainsi que le mapping des résultats pour permettre de récupérer un résultat fonctionnel (en l'occurence, le nom de l'iris plutôt que sa classe en integer)
+S'assurer d'utiliser l'environement env_modeling crée précédement comme kernel
 
-Le fichier train.py permet d'entrainer le modèle.
+Modifier le code afin d'entrainer le modèle et de pouvoir le versionner avec MLflow
+PS : suivre les insights dans le notebook
+
+Après avoir fit votre modèle, et log les résultats dans mlflow, observer les résultats avec l'User Interface de MLflow
+Pour cela, vous devez exécuter la commande ' mlflow ui ' depuis le répertoire train.
+
+Repérer les infos disponibles (param,metrics,artifacts)
+Toutes les informations concernant vos run sont enregistrées localement sur votre machine dans le dossier mlruns situé dans le répertoire /train
+Pour votre information, d'autres méthodes de stockage sont possibles. Cf doc officiel - https://mlflow.org/docs/latest/tracking.html#how-runs-and-artifacts-are-recorded
+
 
 **Exercice**: Lancer le fichier train.py. N'oubliez pas d'activer votre environnement virtuel.
 
@@ -63,7 +71,10 @@ Pour tester l'API, nous allons utiliser Postman.
 
 **Exercice**:
 
-- Localisez l'import des fichiers pickles. Comprenez-vous pourquoi ?
+MLflow va donc nous servir, dans notre cas, à enregistrer notre modèle entraîné et à pouvoir le recharger dans notre API
+
+
+- Localisez l'import du modèle. Comprenez-vous pourquoi ?
 - Adaptez le code pour en faire une API fonctionnelle
 - Testez avec POSTMAN
 
