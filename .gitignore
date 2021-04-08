@@ -2,3 +2,4 @@
 _pycache_
 train/mlruns/*
 data/*
+.DS_Store
