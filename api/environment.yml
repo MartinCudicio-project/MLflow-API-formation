@@ -3,6 +3,7 @@ channels:
   - defaults
 dependencies:
   - python=3.8
+  - pip=21.0.1
   - pip:
     - mlflow==1.15.0
     - falcon==2.0.0
