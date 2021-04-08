@@ -1,3 +1,4 @@
 .vscode
 _pycache_
 train/mlruns/*
+.DS_Store
