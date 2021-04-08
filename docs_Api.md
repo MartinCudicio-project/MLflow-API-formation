@@ -1,5 +1,20 @@
-# API
+# FINImmo, agence immobilière du futur 
 
+FINImmo est une agence immobilière qui veut utiliser un modèle de prédiction, afin de déterminer le prix de vente d'appartements à Saint-Martin. 
+En mettant en place, un modèle de prédiction de prix de vente, l'agence aimerait avoir une estimation de la valeur des logements basé sur une intelligence artificielle. Cela permettra à l'agence de proposer aux futurs acheteurs/vendeurs sur leur site internet, une première estimation instantannée de leur bien. 
+
+## À disposition
+
+1) beaucoup de courage, puisqu'il n'est jamais facile d'extraire de la valeur de ses données. Cela est vrai pour la visualisation, mais encore plus si on veut utiliser la puissance du Machine Learning. 
+
+2) par chance FINImmo a gardé un registre de ses ventes des 6 derniers mois dans un tableur excel (Mai à Juin 2020 - à vérifier) //limite on peut changer les dates pour faire genre que c'est actuel ?... simple et vachement plus parlant...
+En exportant ce tableur, nous obtenons un .csv exploitable
+
+3) des ML Ingenieurs, leur proposant d'opérationnaliser le modèle de prédiction, inspirés d'une philosophie MLOps (dans le meilleur des mondes)
+
+
+# API
+ 
 Nous allons voir ici comment APIser un modèle.
 
 ## Cas d'usage
@@ -12,43 +27,55 @@ Il faut néanmoins de méfier des cas d'usage BATCH. Par exemple une mise à jou
 
 ## Récupération du template pour le TD
 
-Pour ce TD, nous allons nous baser sur un template. Vous allez devoir créer votre propre repository sur Gitlab. (Faites le sur votre espace personnel pour ne pas pourrir le repo Saegus...).
+Pour ce TD, nous allons nous baser sur un template. Vous allez devoir créer votre propre repository sur Gitlab. (Faites le sur votre espace personnel...).
 
-Lors de la création, nous allons utiliser l'import permis par Gitlab, suivez l'image ci dessous (lien du projet à import : https://gitlab.com/saegus/data/formations/dataops-api-td.git):
+Lors de la création, nous allons utiliser l'import permis par Gitlab, suivez l'image ci dessous (lien du projet à import : mettre le bon lien):
 
 ![create project](img/create_project.png)
 
-Le lien pour l'import
 
-## Partie 1 - Création des environnements virtuels
+## Partie 1 - Création/utilisation des environnements virtuels
 
-Souvenez-vous ce qu'on a vu dans les bases. Nouveau projet, nouvel environnement virtuel.
+Nouveau projet, nouvel environnement virtuel.
 Dans notre cas, nous avons un seul projet pour l'entrainement et l'api. En règle générale, nous aurons 2 projets distincts, donc 2 environnements virtuels. En effet, les librairies dont nous avons besoin dans l'api sont plus restreintes que celles lors de la phase d'entrainement, qui peuvent comporter jupyter etc ...
 
-Le 1er environnement virtuel se base sur le requirements.txt que l'on trouve dans le dossier *train*.
+Le 1er environnement virtuel se base sur le environment.yml que l'on trouve dans le dossier *train*.
 
-Le 2ème environnement virtuel se base sur le requirements.txt situé dans le dossier *api*
+Le 2ème environnement virtuel se base sur le environment.yml situé dans le dossier *api*
 
-**Exercice**: Créer les 2 environnements virtuels avec Python 3.6
+**Exercice**: Créer les 2 environnements virtuels
+
+
+## Partie 2 - Entrainement du modèle
 
 Acceder au notebook situé à /train/home_data_Model.ipynb avec votre IDE préféré (JupyterLab, VScode, ...)
-
 S'assurer d'utiliser l'environement env_modeling crée précédement comme kernel
 
-Modifier le code afin d'entrainer le modèle et de pouvoir le versionner avec MLflow
-PS : suivre les insights dans le notebook
+### 2.1 - 1er modèle : régression linéaire avec peu de features
+
+Visualiser le premier modèle créé et comprendre le fonctionnement de MLflow et la commande MLflow UI.
+
+Toutes les informations concernant vos run seroot enregistrées localement sur votre machine dans le dossier mlruns situé dans le répertoire /train.
+Pour votre information, d'autres méthodes de stockage sont possibles. Cf doc officiel - https://mlflow.org/docs/latest/tracking.html#how-runs-and-artifacts-are-recorded
 
 Après avoir fit votre modèle, et log les résultats dans mlflow, observer les résultats avec l'User Interface de MLflow
 Pour cela, vous devez exécuter la commande ' mlflow ui ' depuis le répertoire train.
 
-Repérer les infos disponibles (param,metrics,artifacts)
-Toutes les informations concernant vos run sont enregistrées localement sur votre machine dans le dossier mlruns situé dans le répertoire /train
-Pour votre information, d'autres méthodes de stockage sont possibles. Cf doc officiel - https://mlflow.org/docs/latest/tracking.html#how-runs-and-artifacts-are-recorded
 
 
-**Exercice**: Lancer le fichier train.py. N'oubliez pas d'activer votre environnement virtuel.
+### 2.2 - 2e modèle : RandomForest avec plus de features
 
-## L'API
+Après avoir compris la Partie 2.1, vous devez utiliser Mlflow afin de save le modèle avec ses performances.
+Repérer les infos disponibles du modèle (param,metrics,artifacts)
+
+Ajoute donc le code manquant ! 
+
+Apres avoir ajouté le code manquant, run la cellule et visualise ensuite avec mlflow ui
+PS : On a laissé quelques indices
+
+
+
+## Partie 3 - L'API
 
 Plusieurs frameworks python existent dont:
 
@@ -69,12 +96,55 @@ gunicorn -b 0.0.0.0:8000 main:api
 Pour tester l'API, nous allons utiliser Postman.
 ![test api](img/test-api.png)
 
+MLflow va donc nous servir à pouvoir visualiser les différents modèles entraînés et à pouvoir le charger dans notre API. 
+
 **Exercice**:
 
-MLflow va donc nous servir, dans notre cas, à enregistrer notre modèle entraîné et à pouvoir le recharger dans notre API
-
-
 - Localisez l'import du modèle. Comprenez-vous pourquoi ?
-- Adaptez le code pour en faire une API fonctionnelle
+- Adaptez le code pour en faire une API fonctionnelle en ajoutant le meilleur modèle
 - Testez avec POSTMAN
+
+## Partie 4 - Simulation des prédictions
+
+Maintenant que votre API est fonctionnele avec une bonne version du modèle, nous allons simuler les prédictions. 
+
+À la fin de chaque mois, nous connaissons le prix réel de vente des appartements. Nous allons donc pouvoir suivre la performance de notre modèle en fonction des mois.
+
+### 4.1 - affichage des performance du meilleur modèle entrainé (RandomForest)
+
+vous trouverez dans le dossier /test un notebook de test qui comprend les fonctions de calcul de performances et d'affichage sous forme graphique. 
+
+**Exercice**:
+
+- Requete l'API, pour obtenir les prédictions du mois XXX à XXX
+- Récuperer les réelles prix, calculer les performances, et les afficher
+
+On observe que notre modèle, baisse de performance à partir du mois de XXX
+
+### 4.2 - réentrainement du modèle
+
+Nous observons un drift du modèle. Afin de garantir aux clients un prix de vente optimal, FINImmo veut que son modèle soit le plus peformant possible. 
+
+Nous disposons donc de nouvelles données (données déja existantes pour le training initial + données jusqu'au mois de baisse de prédiction) 
+
+Suite à la baisse de précision à partir du mois de XXX, tu dois alors recréer/réentrainer le modèle RandomForest avec les nouvelles données. 
+
+**Exercice**: 
+
+- à partir du notebook dans /train, réentrainer une RandomForest avec les nouvelles données
+- save le model avec mlflow
+- observer avec mlflow ui
+
+### 4.3 - utilisation du nouveau modèle
+
+Maintenant que nous avons créer un nouveau modèle, ca serait bien de l'utiliser ! 
+
+**Exercice**: 
+
+- charger le nouveau modèle dans l'API
+- à partir du notebook dans /test, faire de nouveaux des prédictions sur le mois de XXX à XXX
+- calculer les performances, et les afficher
+
+
+
 
