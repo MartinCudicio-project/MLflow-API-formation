@@ -28,5 +28,5 @@ modif_raw_data= raw_data.merge(df_transfo,how='left',on='date').sort_values('dat
 data = modif_raw_data.copy()
 data['price'] = data['price']*data['coef_ajustement']
 
-data.to_csv('./train/home_data.csv')
+data.to_csv('./data/home_data.csv')
 print("home_data.csv created")
