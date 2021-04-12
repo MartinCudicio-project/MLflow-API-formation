@@ -1,4 +1,4 @@
-name: env_modeling
+name: env_train
 channels:
   - defaults
 dependencies:
