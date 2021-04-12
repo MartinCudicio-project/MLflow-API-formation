@@ -26,9 +26,16 @@ class Predict:
         # On traite les erreurs bloquantes comme un paramètre manquant
         try:
             # content=body_json["content"]
+            
+            view=body_json['view']
+            lat=body_json['lat']
+            waterfront=body_json['waterfront']
             bedrooms=body_json["bedrooms"]
             bathrooms=body_json["bathrooms"]
+            sqft_basement=body_json['sqft_basement']
+            sqft_above=body_json['sqft_above']
             sqft_living=body_json["sqft_living"]
+            sqft_living15=body_json["sqft_living15"]
             floors=body_json["floors"]
             grade=body_json["grade"]
             yr_built=body_json["yr_built"]
@@ -41,7 +48,7 @@ class Predict:
 
         # On réalise notre predict issu du modèle chargé dans le __init__.py
         # Ex: prediction=model.predict(content)
-        prediction = sk_model.predict([(bedrooms,bathrooms,sqft_living,floors,grade,yr_built)])
+        prediction = sk_model.predict([(view,lat,waterfront,bedrooms,bathrooms,sqft_basement,sqft_above,sqft_living,sqft_living15,floors,grade,yr_built)])
         print(prediction)
         # On renvoie la prédiction
         resp.status = falcon.HTTP_200

@@ -13,5 +13,5 @@ cwd = os.getcwd()
 print(cwd)
 
 # inserer l'ID du modèle à utiliser
-model_id = "08e4968c7bfe405c8234504387cb8e8d"
+model_id = "2726820be51747b68729d18862ab9fbb"
 sk_model = mlflow.sklearn.load_model("../train/mlruns/0/"+model_id+"/artifacts/model")
