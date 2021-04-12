@@ -46,6 +46,8 @@ Le 2ème environnement virtuel se base sur le environment.yml situé dans le dos
 
 **Exercice**: Créer les 2 environnements virtuels
 
+- utiliser la commande (compilateur GNU nécessaire pour lancer des commandes make)
+`make create-envs`
 
 ## Partie 2 - Entrainement du modèle
 
