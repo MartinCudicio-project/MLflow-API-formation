@@ -1,16 +1,16 @@
 # FINImmo, agence immobilière du futur 
 
-FINImmo est une agence immobilière qui veut utiliser un modèle de prédiction, afin de déterminer le prix de vente d'appartements à Saint-Martin. 
-En mettant en place, un modèle de prédiction de prix de vente, l'agence aimerait avoir une estimation de la valeur des logements basé sur une intelligence artificielle. Cela permettra à l'agence de proposer aux futurs acheteurs/vendeurs sur leur site internet, une première estimation instantannée de leur bien. 
+FINImmo est une agence immobilière qui veut utiliser un modèle de prédiction afin de déterminer le prix de vente d'appartements à Saint-Martin. 
+En mettant en place un modèle de prédiction de prix de vente, l'agence aimerait avoir une estimation de la valeur des logements basée sur une intelligence artificielle. Cela permettrait à l'agence de proposer aux futurs acheteurs/vendeurs une première estimation instantannée de leur bien sur leur site internet. 
 
 ## À disposition
 
 1) beaucoup de courage, puisqu'il n'est jamais facile d'extraire de la valeur de ses données. Cela est vrai pour la visualisation, mais encore plus si on veut utiliser la puissance du Machine Learning. 
 
-2) par chance FINImmo a gardé un registre de ses ventes des 6 derniers mois dans un tableur excel (Mai à Juin 2020 - à vérifier) //limite on peut changer les dates pour faire genre que c'est actuel ?... simple et vachement plus parlant...
+2) par chance FINImmo a gardé un registre de ses ventes dans un tableur excel.
 En exportant ce tableur, nous obtenons un .csv exploitable
 
-3) des ML Ingenieurs, leur proposant d'opérationnaliser le modèle de prédiction, inspirés d'une philosophie MLOps (dans le meilleur des mondes)
+3) des ML Ingenieurs leur proposant d'opérationnaliser des modèles de prédiction, inspirés d'une philosophie MLOps (dans le meilleur des mondes)
 
 
 # API
@@ -37,7 +37,8 @@ Lors de la création, nous allons utiliser l'import permis par Gitlab, suivez l'
 ## Partie 1 - Création/utilisation des environnements virtuels
 
 Nouveau projet, nouvel environnement virtuel.
-Dans notre cas, nous avons un seul projet pour l'entrainement et l'api. En règle générale, nous aurons 2 projets distincts, donc 2 environnements virtuels. En effet, les librairies dont nous avons besoin dans l'api sont plus restreintes que celles lors de la phase d'entrainement, qui peuvent comporter jupyter etc ...
+Dans notre cas, nous avons un seul projet pour l'entrainement et l'api. 
+En règle générale, nous aurons 2 projets distincts, donc 2 environnements virtuels. En effet, les librairies dont nous avons besoin dans l'api sont plus restreintes que celles lors de la phase d'entrainement, qui peuvent comporter jupyter etc ...
 
 Le 1er environnement virtuel se base sur le environment.yml que l'on trouve dans le dossier *train*.
 
@@ -48,22 +49,21 @@ Le 2ème environnement virtuel se base sur le environment.yml situé dans le dos
 
 ## Partie 2 - Entrainement du modèle
 
-Acceder au notebook situé à /train/home_data_Model.ipynb avec votre IDE préféré (JupyterLab, VScode, ...)
+Accéder au notebook situé à /train/home_data_Model.ipynb avec votre IDE préféré (JupyterLab, VScode, ...)
 S'assurer d'utiliser l'environement env_modeling crée précédement comme kernel
 
-### 2.1 - 1er modèle : régression linéaire avec peu de features
+### 2.1 - 1er modèle : Régression Linéaire
 
 Visualiser le premier modèle créé et comprendre le fonctionnement de MLflow et la commande MLflow UI.
 
-Toutes les informations concernant vos run seroot enregistrées localement sur votre machine dans le dossier mlruns situé dans le répertoire /train.
+Toutes les informations concernant vos runs seront enregistrées localement sur votre machine dans le dossier mlruns, situé dans le répertoire _/train_.
 Pour votre information, d'autres méthodes de stockage sont possibles. Cf doc officiel - https://mlflow.org/docs/latest/tracking.html#how-runs-and-artifacts-are-recorded
 
-Après avoir fit votre modèle, et log les résultats dans mlflow, observer les résultats avec l'User Interface de MLflow
+Après avoir fit votre modèle, et log les résultats dans mlflow, observer les résultats avec l'User Interface de MLflow.
 Pour cela, vous devez exécuter la commande ' mlflow ui ' depuis le répertoire train.
 
 
-
-### 2.2 - 2e modèle : RandomForest avec plus de features
+### 2.2 - 2e modèle : Random Forest
 
 Après avoir compris la Partie 2.1, vous devez utiliser Mlflow afin de save le modèle avec ses performances.
 Repérer les infos disponibles du modèle (param,metrics,artifacts)
