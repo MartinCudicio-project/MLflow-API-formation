@@ -7,4 +7,6 @@ api = falcon.API()
 
 # Déclaration de la route qui sera utilisé lors de l'appel du web service
 api.add_route("/batch",PredictBatch())
-api.add_route("/stream", PredictStream())
+
+# rajoute la route pour les prédictions stream
+#api.add_route(...)

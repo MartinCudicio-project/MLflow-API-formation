@@ -25,24 +25,11 @@ class PredictStream:
                 "Could not decode the request body. The " "JSON was incorrect.",
             )
         # On traite les erreurs bloquantes comme un paramètre manquant
+        # Rapporte toi au schéma pour savoir les features entrantes
         try:
             # content=body_json["content"]
+            # content1=body_json["content1"]
             
-            # --------------------------------------
-            #               correction 
-            # --------------------------------------
-            view=body_json['view']
-            lat=body_json['lat']
-            waterfront=body_json['waterfront']
-            bedrooms=body_json["bedrooms"]
-            bathrooms=body_json["bathrooms"]
-            sqft_basement=body_json['sqft_basement']
-            sqft_above=body_json['sqft_above']
-            sqft_living=body_json["sqft_living"]
-            sqft_living15=body_json["sqft_living15"]
-            floors=body_json["floors"]
-            grade=body_json["grade"]
-            yr_built=body_json["yr_built"]
 
         # except ValueError:
         except Exception as e:
@@ -52,17 +39,12 @@ class PredictStream:
             )
 
         # On réalise notre predict issu du modèle chargé dans le __init__.py
-        # prediction=sk_model.predict(content)
+        # prediction=sk_model.predict([content,content1])
         
-        # --------------------------------------
-        #               correction 
-        # --------------------------------------
-        
-        prediction = sk_model.predict([(view,lat,waterfront,bedrooms,bathrooms,sqft_basement,sqft_above,sqft_living,sqft_living15,floors,grade,yr_built)])
         
         # On renvoie la prédiction
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(prediction[0])
+        #resp.body = json.dumps(prediction[0])
 
 # Class pour les prédictions batch
 class PredictBatch:
