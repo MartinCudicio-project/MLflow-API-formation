@@ -53,7 +53,7 @@ Le 2ème environnement virtuel se base sur le environment.yml situé dans le dos
 ## Partie 2 - Entrainement du modèle
 
 Accéder au notebook situé à /train/home_data_Model.ipynb avec votre IDE préféré (JupyterLab, VScode, ...)
-S'assurer d'utiliser l'environement _env_train_ crée précédement comme kernel
+S'assurer d'utiliser comme kernel l'environement _env_train_ crée précédement
 
 ### 2.1 - 1er modèle : Régression Linéaire
 
