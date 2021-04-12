@@ -63,7 +63,7 @@ Toutes les informations concernant vos runs seront enregistrées localement sur 
 Pour votre information, d'autres méthodes de stockage sont possibles. Cf doc officiel - https://mlflow.org/docs/latest/tracking.html#how-runs-and-artifacts-are-recorded
 
 Après avoir fit votre modèle, et log les résultats dans mlflow, observer les résultats avec l'User Interface de MLflow.
-Pour cela, vous devez exécuter la commande ' mlflow ui ' depuis le répertoire train.
+Pour cela, vous devez exécuter la commande `mlflow ui` depuis le répertoire train.
 
 
 ### 2.2 - 2e modèle : Random Forest
@@ -73,7 +73,7 @@ Repérer les infos disponibles du modèle (param,metrics,artifacts)
 
 Ajoute donc le code manquant ! 
 
-Apres avoir ajouté le code manquant, run la cellule et visualise ensuite avec mlflow ui
+Apres avoir ajouté le code manquant, run la cellule et visualise ensuite avec `mlflow ui`
 
 PS : On a laissé quelques indices
 
