@@ -74,6 +74,7 @@ Repérer les infos disponibles du modèle (param,metrics,artifacts)
 Ajoute donc le code manquant ! 
 
 Apres avoir ajouté le code manquant, run la cellule et visualise ensuite avec mlflow ui
+
 PS : On a laissé quelques indices
 
 
