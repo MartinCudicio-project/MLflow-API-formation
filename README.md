@@ -100,6 +100,21 @@ waitress-serve --port=8000 main:api
 Pour tester l'API, nous allons utiliser Postman.
 ![test api](img/test-api.png)
 
+{
+    "view" : 0,
+    "lat": 47.4639,
+    "waterfront": 0,
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "sqft_basement": 0,
+    "sqft_above": 1970,
+    "sqft_living": 1970,
+    "sqft_living15": 2340,
+    "floors":7,
+    "grade":7,
+    "yr_built": 1973
+}
+
 MLflow va donc nous servir à pouvoir visualiser les différents modèles entraînés et à pouvoir le charger dans notre API. 
 
 **Exercice**:
