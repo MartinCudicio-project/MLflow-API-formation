@@ -20,5 +20,11 @@ print(cwd)
 #               corection 
 # --------------------------------------
 
-model_id = "e6dc28fbd8264db59799a91f4a700b4c"
+# model lin
+# model_id = "ff68023169ce4d1fb7599b0b1ada57a3"
+# model RF 1
+# model_id = "90abfce2c59b4b16a1689dbdc1a1788a"
+# model RF 2
+model_id = "76a289fb1350438786347d35e5972498"
+
 sk_model = mlflow.sklearn.load_model("../train/mlruns/1/"+model_id+"/artifacts/model")
