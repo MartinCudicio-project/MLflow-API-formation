@@ -1,4 +1,4 @@
-name: env_API
+name: env_api
 channels:
   - defaults
 dependencies:
