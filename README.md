@@ -91,9 +91,9 @@ Pour des soucis de simplicité et performance, nous utilisons Falcon dans notre 
 
 Regardez le dossier api et essayez de le comprendre.
 
-Commande pour lancer le serveur web
+Après t'être placé dans le dossier api, exécute la commande pour lancer le serveur web
 ```python
-gunicorn -b 0.0.0.0:8000 main:api
+waitress-serve --port=8000 main:api
 ```
 
 Pour tester l'API, nous allons utiliser Postman.
