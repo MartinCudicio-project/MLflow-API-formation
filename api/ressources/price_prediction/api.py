@@ -27,6 +27,10 @@ class Predict:
         try:
             # content=body_json["content"]
             
+            # --------------------------------------
+            #               correction 
+            # --------------------------------------
+
             view=body_json['view']
             lat=body_json['lat']
             waterfront=body_json['waterfront']
@@ -47,11 +51,17 @@ class Predict:
             )
 
         # On réalise notre predict issu du modèle chargé dans le __init__.py
-        # Ex: prediction=model.predict(content)
+        # prediction=sk_model.predict(content)
+        
+        # --------------------------------------
+        #               correction 
+        # --------------------------------------
+        
         prediction = sk_model.predict([(view,lat,waterfront,bedrooms,bathrooms,sqft_basement,sqft_above,sqft_living,sqft_living15,floors,grade,yr_built)])
+        
         print(prediction)
         # On renvoie la prédiction
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(
-            {"content": prediction[0], "prediction": "Ceci est la prédiction"}
+            {"res": prediction[0]}
         )

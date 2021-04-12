@@ -9,7 +9,7 @@ create-envs: ## crée env conda pour /train et /api
 	conda env create --force -f ./api/environment.yml
 
 get-data: ## Télécharge et transforme les données
-	python utils/get_data.py
+	python3 utils/get_data.py
 
 all: ## Déroule create-envs et get-data
 	$(MAKE) create-envs
