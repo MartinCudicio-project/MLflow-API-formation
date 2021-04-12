@@ -63,7 +63,7 @@ Toutes les informations concernant vos runs seront enregistrées localement sur 
 Pour votre information, d'autres méthodes de stockage sont possibles. Cf doc officiel - https://mlflow.org/docs/latest/tracking.html#how-runs-and-artifacts-are-recorded
 
 Après avoir fit votre modèle, et log les résultats dans mlflow, observer les résultats avec l'User Interface de MLflow.
-Pour cela, vous devez exécuter la commande ' mlflow ui ' depuis le répertoire train.
+Pour cela, vous devez exécuter la commande `mlflow ui` depuis le répertoire train.
 
 
 ### 2.2 - 2e modèle : Random Forest
@@ -73,7 +73,8 @@ Repérer les infos disponibles du modèle (param,metrics,artifacts)
 
 Ajoute donc le code manquant ! 
 
-Apres avoir ajouté le code manquant, run la cellule et visualise ensuite avec mlflow ui
+Apres avoir ajouté le code manquant, run la cellule et visualise ensuite avec `mlflow ui`
+
 PS : On a laissé quelques indices
 
 
@@ -91,13 +92,28 @@ Pour des soucis de simplicité et performance, nous utilisons Falcon dans notre 
 
 Regardez le dossier api et essayez de le comprendre.
 
-Commande pour lancer le serveur web
+Après t'être placé dans le dossier api, exécute la commande pour lancer le serveur web en utilisant l'environement env_api
 ```python
-gunicorn -b 0.0.0.0:8000 main:api
+waitress-serve --port=8000 main:api
 ```
 
 Pour tester l'API, nous allons utiliser Postman.
 ![test api](img/test-api.png)
+
+{
+    "view" : 0,
+    "lat": 47.4639,
+    "waterfront": 0,
+    "bedrooms": 3,
+    "bathrooms": 2.5,
+    "sqft_basement": 0,
+    "sqft_above": 1970,
+    "sqft_living": 1970,
+    "sqft_living15": 2340,
+    "floors":7,
+    "grade":7,
+    "yr_built": 1973
+}
 
 MLflow va donc nous servir à pouvoir visualiser les différents modèles entraînés et à pouvoir le charger dans notre API. 
 
