@@ -1,5 +1,4 @@
 .vscode
 _pycache_
 train/mlruns/*
-data/*
 .DS_Store
